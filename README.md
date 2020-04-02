@@ -21,7 +21,7 @@ This project uses:
 1. Run `setup.cmd`
 2. Open `MusicFestival.Blazor.sln` 
 3. Make sure The MusicFestival.Blazor.Epi project is set as the startup project (instructions for running the Blazor-templates stand-alone further down)
-4. Press F5 to run
+4. Press F5 to run (first time loading will take some time, due to DB being populated)
 5. Login on `/episerver` with either one of the following:
 
 |Name    |Password    |Mailbox | Email |
