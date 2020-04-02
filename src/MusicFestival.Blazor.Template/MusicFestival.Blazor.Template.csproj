@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RazorLangVersion>3.0</RazorLangVersion>
+    <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
+    <DefaultItemExcludes>$(DefaultItemExcludes);Publish/**</DefaultItemExcludes>
+    <BlazorCacheBootResources>false</BlazorCacheBootResources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="web.config" />
+    <Content Remove="wwwroot\settings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="wwwroot\Assets\Styles\Common\base.less" />
+    <None Remove="wwwroot\Assets\Styles\Common\variables.less" />
+    <None Remove="wwwroot\Assets\Styles\Common\_grid.less" />
+    <None Remove="wwwroot\Assets\Styles\Common\_normalize.less" />
+    <None Remove="wwwroot\Assets\Styles\Common\_typography.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Atoms\Button.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Atoms\Heading.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Atoms\Icon.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Atoms\Link.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Molecules\Content.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Molecules\ContentBlock.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Molecules\Grid.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Molecules\Hero.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Organisms\Footer.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Organisms\Header.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Organisms\NavBar.less" />
+    <None Remove="wwwroot\Assets\Styles\Components\Organisms\Page.less" />
+    <None Remove="wwwroot\Assets\Styles\editor.less" />
+    <None Remove="wwwroot\Assets\Styles\Main.less" />
+    <None Remove="wwwroot\Assets\Styles\Utils\utils-align.less" />
+    <None Remove="wwwroot\Assets\Styles\Utils\utils-display.less" />
+    <None Remove="wwwroot\Assets\Styles\Utils\utils-layout.less" />
+    <None Remove="wwwroot\Assets\Styles\Utils\utils-link.less" />
+    <None Remove="wwwroot\Assets\Styles\Utils\utils-offset.less" />
+    <None Remove="wwwroot\Assets\Styles\Utils\utils-position.less" />
+    <None Remove="wwwroot\Assets\Styles\Utils\utils-size.less" />
+    <None Remove="wwwroot\Assets\Styles\Utils\utils-state.less" />
+    <None Remove="wwwroot\Assets\Styles\Utils\utils-text.less" />
+    <None Remove="wwwroot\Assets\Styles\Utils\utils.less" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\settings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview2.20160.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.0-preview2.20160.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.0-preview2.20160.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.0-preview2.20160.5" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="dotnet publish -o $(ProjectDir)Publish --no-build&#xD;&#xA;mkdir $(ProjectDir)..\MusicFestival.Blazor.Epi\Blazor&#xD;&#xA;mkdir $(ProjectDir)..\MusicFestival.Blazor.Epi\Blazor\dist&#xD;&#xA;xcopy $(ProjectDir)Publish\wwwroot\*.* $(ProjectDir)..\MusicFestival.Blazor.Epi\Blazor\dist /E /Y&#xD;&#xA;" />
+  </Target>
+
+</Project>

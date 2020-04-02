@@ -1,0 +1,43 @@
+@inherits ArtistDetailsPageBase
+
+<div class="ArtistDetailsPage">
+    <nav class="Page-container PageHeader NavBar">
+        <BackButton PrevUrl="@ViewModel.ParentLink.Url" />
+
+        <LanguageSelector ExistingLanguages="@ViewModel.ExistingLanguages" Language="@ViewModel.Language" />
+
+    </nav>
+    <div class="Page-container u-posRelative">
+        <ArtistImage Name="@ViewModel.ArtistName" ImageUrl="@ViewModel.ArtistPhoto" />
+        <div class="top">
+            <h1 v-epi-edit="'ArtistName'">@ViewModel.ArtistName</h1>
+        </div>
+
+        <EpiProperty PropertyName="ArtistPhoto" />
+        <EpiProperty PropertyName="ArtistGenre" />
+        <EpiProperty PropertyName="ArtistIsHeadliner" />
+
+        <div class="artist-information">
+            <p data-epi-property-name="@State.EnableEditProperty("StageName")">
+                @ViewModel.StageName
+            </p>
+            <p>
+                <span data-epi-property-name="@State.EnableEditProperty("PerformanceStartTime")">
+                    @ViewModel.PerformanceStartTime
+                </span> -
+                <span data-epi-property-name="@State.EnableEditProperty("PerformanceEndTime")">
+                    @ViewModel.PerformanceEndTime
+                </span>
+            </p>
+        </div>
+        <div class="artist-description" data-epi-property-name="@State.EnableEditProperty("ArtistDescription")">
+            @((MarkupString)ViewModel.ArtistDescription)
+        </div>
+    </div>
+    <footer>
+        <div class="FooterBottom">
+            <h6>&copy; Music Festival 2020</h6>
+        </div>
+    </footer>
+</div>
+

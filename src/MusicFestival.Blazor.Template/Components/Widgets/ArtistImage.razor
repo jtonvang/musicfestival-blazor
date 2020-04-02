@@ -1,0 +1,12 @@
+<div class="artistImage">
+    <div>
+        <ConditionalImage Src="@ImageUrl" Alt="@Name"></ConditionalImage>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string ImageUrl { get; set; }
+    [Parameter]
+    public string Name { get; set; }
+}

@@ -1,0 +1,37 @@
+@using Microsoft.Extensions.Logging
+
+<ul class="lang">
+
+    @foreach (var item in ExistingLanguages)
+    {
+
+        <li @key="item.Name" class="@IsCurrentLanguage(item)">
+            <a @onclick="() => SwitchLanguage(item.Link)">@item.DisplayName</a>            
+        </li>
+    }
+
+</ul>
+
+@code {
+
+    [Inject]
+    NavigationManager NavManager { get; set; }
+    
+    [Parameter]
+    public IEnumerable<LanguageViewModel> ExistingLanguages { get; set; }
+
+    [Parameter]
+    public LanguageViewModel Language { get; set; }
+
+    private string IsCurrentLanguage(LanguageViewModel item)
+    {        
+        return item.Name == Language.Name
+            ? "active"
+            : string.Empty;
+    }
+
+    private void SwitchLanguage(string link)
+    {
+        NavManager.NavigateTo(link, true);
+    }
+}

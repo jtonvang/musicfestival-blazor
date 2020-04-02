@@ -1,0 +1,19 @@
+<EpiLink Url="@Url">
+    <div class="card">
+        <div class="round">
+            <ConditionalImage Src="@Image" Alt="@Name" />
+        </div>
+        <div class="info">
+            <p>@Name</p>
+        </div>
+    </div>
+</EpiLink>
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+    [Parameter]
+    public string Image { get; set; }
+    [Parameter]
+    public string Url { get; set; }
+}

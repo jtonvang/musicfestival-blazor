@@ -1,0 +1,37 @@
+@inherits ConnectedComponent
+
+<section class="Hero">
+    <div class="Hero-content Page-container">
+
+        <h1 data-epi-property-name="@State.EnableEditProperty("Title")">
+            @Title <img class="Hero-blazor" src="/Assets/Images/Blazor.png" />
+
+        </h1>
+
+        <h5 data-epi-property-name="@State.EnableEditProperty("Subtitle")">
+            @Subtitle
+        </h5>
+
+        @if (!State.EpiDisableEditing)
+        {
+            <EpiProperty PropertyName="HeroImage" />
+        }
+              
+    </div>
+
+    @if(HeroImage != null)
+    {
+        <div class="Hero-image" style="background-image : url('@HeroImage')"></div>
+    }
+
+</section>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter]
+    public string Subtitle { get; set; }
+    [Parameter]
+    public string HeroImage { get; set; }
+
+}

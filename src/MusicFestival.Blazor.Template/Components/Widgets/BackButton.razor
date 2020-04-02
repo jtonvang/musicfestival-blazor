@@ -1,0 +1,19 @@
+
+@if(PrevUrl != null)
+{
+    <div class="backButton">
+        <EpiLink Url="@PrevUrl">
+            @* Blazor doesn't support svg sprites yet, planned for v5 afaik.*@
+            @*<svg><use xlink:href="#back"></use></svg>*@
+
+            <img src="/Assets/Images/SVG/back.svg" />
+        </EpiLink>
+    </div>
+
+}
+
+@code {
+    [Parameter]
+    public string PrevUrl { get; set; }
+}
+

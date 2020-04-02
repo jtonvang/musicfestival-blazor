@@ -1,0 +1,25 @@
+@using MusicFestival.Blazor.Template.Services
+
+<!--
+    Renders a button to edit a property in OPE. Useful when the property to
+    edit isn't directly visible (such as ArtistGenre on the ArtistDetailsPage
+    component), or when the OPE overlays would be overlapping (e.g. the background
+    image in the Hero component).
+-->
+
+@if (State.IsEditable)
+{
+    <button class="EpiProperty" data-epi-property-name="@State.EnableEditProperty(PropertyName)" type="button">
+        Edit property: @PropertyName
+    </button>
+}
+@code {
+    [Parameter]
+    public string PropertyName { get; set; }
+
+    [Inject]
+    StateService State { get; set; }
+
+
+}
+

@@ -1,0 +1,26 @@
+@inherits ContentBlockBase
+
+<div class="Page-container ContentBlock">
+    <div class="Grid Grid--alignMiddle Grid--gutterA @ImageAlignment(ViewModel.ImageAlignment)">
+        @if (ViewModel.Image != null)
+        {
+
+            <div class="Grid-cell u-md-size1of2">
+                <ConditionalImage Src="@ViewModel.Image" Alt="@ViewModel.Title"></ConditionalImage>
+            </div>
+        }
+        <div class="Grid-cell">
+            <h2 v-epi-edit="'Title'">@ViewModel.Title</h2>
+            <div v-epi-edit="'Content'">
+                @((MarkupString)ViewModel.Content)
+            </div>
+            @if (ViewModel.Image == null)
+            {
+                <EpiProperty PropertyName="Image" />
+            }
+
+        </div>
+    </div>
+
+</div>
+

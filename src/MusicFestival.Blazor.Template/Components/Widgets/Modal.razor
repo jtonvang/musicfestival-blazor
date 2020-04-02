@@ -1,0 +1,41 @@
+@using MusicFestival.Blazor.Template.Services
+
+@if (State.ModalShowing)
+{
+    <transition name="modal">
+        <div class="modal-mask">
+            <div class="modal-wrapper">
+                <div class="modal-container">
+
+                    <div class="modal-content">
+                        <slot name="content">
+                            @ChildContent
+                        </slot>
+                    </div>
+
+                    <div class="modal-footer">
+                        <slot name="footer">
+                            <button class="Button modal-default-button" @onclick="CloseModal">
+                                OK
+                            </button>
+                        </slot>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </transition>
+
+}
+
+@code{
+    [Inject]
+    StateService State { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private void CloseModal(MouseEventArgs e)
+    {
+        State.ModalShowing = false;
+    }
+}

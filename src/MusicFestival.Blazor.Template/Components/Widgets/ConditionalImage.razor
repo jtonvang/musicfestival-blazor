@@ -1,0 +1,11 @@
+@if(Src != null)
+{
+    <img class="ConditionalImage" src="@Src" alt="@Alt" />
+}
+
+@code {
+    [Parameter]
+    public string Src { get; set; }
+    [Parameter]
+    public string Alt { get; set; }
+}

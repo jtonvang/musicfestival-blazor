@@ -1,0 +1,47 @@
+
+
+<section class="Grid Grid--alignMiddle Grid--gutterA ContentArea">
+
+    @foreach (var block in Model)
+    {
+        <div class="Grid-cell @GetDisplayOption(block.DisplayOption)">
+
+            @if (block.GetContentType() != null)
+            {
+                RenderFragment renderFragment = (builder) =>
+                {
+                    builder.OpenComponent(0, block.GetContentType());
+                    builder.AddAttribute(1, "ViewModel", block);
+
+                    builder.CloseComponent();
+                };
+                @renderFragment;
+            }
+        </div>
+    }
+
+</section>
+
+@code {
+    [Parameter]
+    public IEnumerable<BlockBaseViewModel> Model { get; set; }
+
+    private readonly Dictionary<string, string> DisplayOptions = new Dictionary<string, string>
+{
+        { "full", "u-md-sizeFull" },
+        { "wide", "u-md-size2of3" },
+        { "half", "u-md-size1of2" },
+        { "empty", "u-md-size1of3" }
+    };
+
+    private string GetDisplayOption(string displayOption)
+    {
+        var option = string.Empty;
+
+        DisplayOptions.TryGetValue(displayOption, out option);
+
+        return option;
+    }
+
+
+}

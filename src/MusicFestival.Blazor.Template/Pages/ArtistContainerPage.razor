@@ -1,0 +1,43 @@
+@inherits ArtistContainerPageBase
+
+<div class="ArtistContainerPage">
+    <nav class="Page-container PageHeader NavBar">
+        <BackButton PrevUrl="@ViewModel.ParentLink.Url" />
+        <LanguageSelector ExistingLanguages="@ViewModel.ExistingLanguages" Language="@ViewModel.Language" />
+    </nav>
+
+    <div class="Page-container">
+        <div class="top gutter">
+            <h1 v-epi-edit="'Name'">@ViewModel.Name</h1>
+        </div>
+        <div class="list">
+
+            @* Null check Artists since async init might not be completed *@
+            @if (Artists != null)
+            {
+                var artistsByLetter = Artists.GroupBy(a => a.ArtistName.Substring(0, 1));
+
+                @foreach (var artists in artistsByLetter)
+                {
+                    <div>
+                        <h3>@artists.Key</h3>
+                        @foreach (var artist in artists)
+                        {
+                            <Card Name="@artist.ArtistName"
+                                  Image="@artist.ArtistPhoto"
+                                  Url="@artist.Url" />
+                        }
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="FooterBottom">
+            <h6>&copy; Music Festival 2020</h6>
+        </div>
+    </footer>
+</div>
+

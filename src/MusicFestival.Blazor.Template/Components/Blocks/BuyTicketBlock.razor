@@ -1,0 +1,39 @@
+<div class="buyTickets-container">
+    <h3 data-epi-propery-name="@State.EnableEditProperty(PrefixPropertyName("Heading"))">
+        @(Heading ?? Model.Heading)
+    </h3>
+    <div>
+        <p data-epi-propery-name="@State.EnableEditProperty(PrefixPropertyName("Message"))">
+            @(Message ?? Model.Message)
+        </p>
+        <input type="email" />
+    </div>
+</div>
+
+@code{
+    [Parameter]
+    public string PagePropertyName { get; set; }
+
+    [Parameter]
+    public string Heading { get; set; }
+
+    [Parameter]
+    public string Message { get; set; }
+
+    [Parameter]
+    public BuyTicketBlockViewModel Model { get; set;}
+
+    [Inject]
+    StateService State { get; set; }
+
+    private string PrefixPropertyName(string propertyName)
+    {
+        if (!string.IsNullOrEmpty(PagePropertyName))
+        {
+            return $"{PagePropertyName}.{propertyName}";
+        }
+
+        return propertyName;
+    }
+}
+
