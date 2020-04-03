@@ -13,7 +13,7 @@ namespace MusicFestival.Blazor.Template.Pages
         ContentApiService ApiService { get; set; }
 
         [Inject]
-        StateService State { get; set; }
+        protected StateService State { get; set; }
 
         [Inject]
         Task<Settings> GetSettings { get; set; }

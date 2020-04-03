@@ -10,8 +10,8 @@
             </div>
         }
         <div class="Grid-cell">
-            <h2 v-epi-edit="'Title'">@ViewModel.Title</h2>
-            <div v-epi-edit="'Content'">
+            <h2 data-epi-property-name="@State.EnableEditProperty("Title")">@ViewModel.Title</h2>
+            <div data-epi-property-name="@State.EnableEditProperty("Content")">
                 @((MarkupString)ViewModel.Content)
             </div>
             @if (ViewModel.Image == null)
@@ -23,4 +23,9 @@
     </div>
 
 </div>
+
+@code {
+    [Inject]
+    StateService State { get; set; }
+}
 

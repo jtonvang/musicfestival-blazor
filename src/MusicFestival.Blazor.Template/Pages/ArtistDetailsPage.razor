@@ -10,7 +10,7 @@
     <div class="Page-container u-posRelative">
         <ArtistImage Name="@ViewModel.ArtistName" ImageUrl="@ViewModel.ArtistPhoto" />
         <div class="top">
-            <h1 v-epi-edit="'ArtistName'">@ViewModel.ArtistName</h1>
+            <h1 data-epi-property-name="@State.EnableEditProperty("ArtistName")">@ViewModel.ArtistName</h1>
         </div>
 
         <EpiProperty PropertyName="ArtistPhoto" />

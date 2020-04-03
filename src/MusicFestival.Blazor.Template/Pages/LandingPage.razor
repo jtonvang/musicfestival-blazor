@@ -18,13 +18,13 @@
     </EpiLink>
     
     <main class="Page-container">
-        <div v-epi-edit="'MainContentArea'">
+        <div data-epi-property-name="@State.EnableEditProperty("MainContentArea")">
             <ContentArea Model="@ViewModel.MainContentArea" />
         </div>
     </main>
 
     <footer>
-        <div v-epi-edit="'FooterContentArea'">
+        <div data-epi-property-name="@State.EnableEditProperty("FooterContentArea")">
             <ContentArea Model="@ViewModel.FooterContentArea"></ContentArea>
         </div>
         <div class="FooterBottom">

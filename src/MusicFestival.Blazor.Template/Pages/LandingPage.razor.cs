@@ -8,7 +8,7 @@ namespace MusicFestival.Blazor.Template.Pages
     public class LandingPageBase : ComponentBase
     {
         [Inject]
-        StateService State { get; set; }
+        protected StateService State { get; set; }
 
         [Inject]
         Task<Settings> GetSettings { get; set; }
